@@ -24,17 +24,17 @@ mongoose.connect(process.env.MONGOOSE_URI, {
 
 const app = express();
 
-app.use(helmet());
-app.use(helmet.referrerPolicy({ policy: "same-origin" }));
-app.use(helmet.contentSecurityPolicy({
-  directives: {
-    defaultSrc: ["'self'"],
-    scriptSrc: ["'self'", "trusted-cdn.com"],
-    styleSrc: ["'self'"],
-    imgSrc: ["'self'"],
-    formAction: ["'self'"]
-  }
-}));
+// app.use(helmet());
+// app.use(helmet.referrerPolicy({ policy: "same-origin" }));
+// app.use(helmet.contentSecurityPolicy({
+//   directives: {
+//     defaultSrc: ["'self'"],
+//     scriptSrc: ["'self'", "trusted-cdn.com"],
+//     styleSrc: ["'self'"],
+//     imgSrc: ["'self'"],
+//     formAction: ["'self'"]
+//   }
+// }));
 
 app.use('/public', express.static(process.cwd() + '/public'));
 

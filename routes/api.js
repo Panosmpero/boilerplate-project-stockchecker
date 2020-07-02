@@ -29,8 +29,10 @@ const checkStock = async (stock, like, res) => {
     console.log("Axios get success");
     let { data } = stockRawData;
 
-    // Get client's IP in v6
-    let ip = await publicIp.v6();
+    // Get client's IP
+    let regexLanguageAndIPAddress = /.*?(?=,)/;
+    let ipAddress = JSON.stringify(regexLanguageAndIPAddress.exec(req.headers['x-forwarded-for'])).slice(2, -2);   
+    let ip = ipAddress || await publicIp.v4();
 
     // If user clicked "like" we add IP, if IP already in stock then nothing gets added
     let update = like 
